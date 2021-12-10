@@ -27,6 +27,7 @@ namespace CSharpTestProject
         private string searchResultPanelNews;
         private string searchResultPanelPurchases;
         private string searchResultStatus;
+        private string googleBanner;
 
         [SetUp]
         public void SetupTest()
@@ -42,8 +43,9 @@ namespace CSharpTestProject
             searchResultPanelPictures =     "//*[@id='hdtb-msb']/div[1]/div/div[2]/a"; 
             searchResultPanelVideos =       "//*[@id='hdtb-msb']/div[1]/div/div[3]/a";
             searchResultPanelNews =         "//*[@id='hdtb-msb']/div[1]/div/div[4]/a";
-            searchResultPanelPurchases =    "//*[@id='hdtb-msb']/div[1]/div/div[5]/a";
+           // searchResultPanelPurchases =    "//*[@id='hdtb-msb']/div[1]/div/div[5]/a"; // google убрал эту кнопку
             searchResultStatus =            "//*[@id='result-stats']";
+            googleBanner =                  "//*[@alt='Google']";
         }
 
 
@@ -56,7 +58,7 @@ namespace CSharpTestProject
 
             wait.Until(driver => driver.FindElement(By.XPath(searchBox)));
             driver.FindElement(By.XPath(searchBox)).SendKeys(searchText);
-            driver.FindElement(By.XPath("//*[@alt='Google']")).Click();
+            driver.FindElement(By.XPath(googleBanner)).Click();
             driver.FindElement(By.XPath(searchButton)).Click();
             System.Console.WriteLine("Search query Sent to:" + homeURL);
 
@@ -69,31 +71,25 @@ namespace CSharpTestProject
             Assert.IsNotNull(wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelAll))));
             IWebElement elementSearchResultPanelAll = driver.FindElement(By.XPath(searchResultPanelAll));
             string text2 = elementSearchResultPanelAll.Text; //  debud
-            Assert.AreEqual(elementSearchResultPanelAll.Text, "Все");
+            Assert.AreEqual(elementSearchResultPanelAll.Text, "All");
             System.Console.WriteLine("searchResultPanelAll found:" + elementSearchResultPanelAll.Text);
 
             wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelPictures)));
             IWebElement elementSearchResultPanelPictures = driver.FindElement(By.XPath(searchResultPanelPictures));
             string text3 = elementSearchResultPanelPictures.Text; //  debud
-            Assert.AreEqual(elementSearchResultPanelPictures.Text, "Картинки");
+            Assert.AreEqual(elementSearchResultPanelPictures.Text, "Images");
             System.Console.WriteLine("searchResultPanelPictures found:" + elementSearchResultPanelPictures.Text);
 
             wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelNews)));
             IWebElement elementSearchResultPanelNews = driver.FindElement(By.XPath(searchResultPanelNews));
             string text4 = elementSearchResultPanelNews.Text; //  debud
-            Assert.AreEqual(elementSearchResultPanelNews.Text, "Новости");
+            Assert.AreEqual(elementSearchResultPanelNews.Text, "News");
             System.Console.WriteLine("searchResultPanelNews found:" + elementSearchResultPanelNews.Text);
-
-            wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelPurchases)));
-            IWebElement elementSearchResultPanelPurchases = driver.FindElement(By.XPath(searchResultPanelPurchases));
-            string text5 = elementSearchResultPanelPurchases.Text; //  debud
-            Assert.AreEqual(elementSearchResultPanelPurchases.Text, "Покупки");
-            System.Console.WriteLine("searchResultPanelPurchases found:" + elementSearchResultPanelPictures.Text);
 
             wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelPurchases)));
             IWebElement elementsearchResultPanelVideos = driver.FindElement(By.XPath(searchResultPanelVideos));
             string text6 = elementsearchResultPanelVideos.Text; //  debud
-            Assert.AreEqual(elementsearchResultPanelVideos.Text, "Видео");
+            Assert.AreEqual(elementsearchResultPanelVideos.Text, "Videos");
             System.Console.WriteLine("searchResultPanelPurchases found:" + elementsearchResultPanelVideos.Text);
 
         }

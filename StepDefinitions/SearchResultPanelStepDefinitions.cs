@@ -28,7 +28,6 @@ namespace CSharpTestProject.StepDefinitions
         String searchResultPanelPictures =     "//*[@id='hdtb-msb']/div[1]/div/div[2]/a";
         String searchResultPanelVideos =       "//*[@id='hdtb-msb']/div[1]/div/div[3]/a";
         String searchResultPanelNews =         "//*[@id='hdtb-msb']/div[1]/div/div[4]/a";
-        String searchResultPanelPurchases =    "//*[@id='hdtb-msb']/div[1]/div/div[5]/a";
         String searchResultStatus =            "//*[@id='result-stats']";
         WebDriverWait wait;
        [Given(@"I have navigated to the google search page")]
@@ -75,31 +74,25 @@ namespace CSharpTestProject.StepDefinitions
             Assert.IsNotNull(wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelAll))));
             IWebElement elementSearchResultPanelAll = driver.FindElement(By.XPath(searchResultPanelAll));
             string text2 = elementSearchResultPanelAll.Text; //  debud
-            Assert.AreEqual(elementSearchResultPanelAll.Text, "Все");
+            Assert.AreEqual(elementSearchResultPanelAll.Text, "All");
             System.Console.WriteLine("searchResultPanelAll found:" + elementSearchResultPanelAll.Text);
 
             wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelPictures)));
             IWebElement elementSearchResultPanelPictures = driver.FindElement(By.XPath(searchResultPanelPictures));
             string text3 = elementSearchResultPanelPictures.Text; //  debud
-            Assert.AreEqual(elementSearchResultPanelPictures.Text, "Картинки");
+            Assert.AreEqual(elementSearchResultPanelPictures.Text, "Images");
             System.Console.WriteLine("searchResultPanelPictures found:" + elementSearchResultPanelPictures.Text);
 
             wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelNews)));
             IWebElement elementSearchResultPanelNews = driver.FindElement(By.XPath(searchResultPanelNews));
             string text4 = elementSearchResultPanelNews.Text; //  debud
-            Assert.AreEqual(elementSearchResultPanelNews.Text, "Новости");
+            Assert.AreEqual(elementSearchResultPanelNews.Text, "News");
             System.Console.WriteLine("searchResultPanelNews found:" + elementSearchResultPanelNews.Text);
 
-            wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelPurchases)));
-            IWebElement elementSearchResultPanelPurchases = driver.FindElement(By.XPath(searchResultPanelPurchases));
-            string text5 = elementSearchResultPanelPurchases.Text; //  debud
-            Assert.AreEqual(elementSearchResultPanelPurchases.Text, "Покупки");
-            System.Console.WriteLine("searchResultPanelPurchases found:" + elementSearchResultPanelPictures.Text);
-
-            wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelPurchases)));
+            wait.Until(driver => driver.FindElement(By.XPath(searchResultPanelVideos)));
             IWebElement elementsearchResultPanelVideos = driver.FindElement(By.XPath(searchResultPanelVideos));
             string text6 = elementsearchResultPanelVideos.Text; //  debud
-            Assert.AreEqual(elementsearchResultPanelVideos.Text, "Видео");
+            Assert.AreEqual(elementsearchResultPanelVideos.Text, "Videos");
             System.Console.WriteLine("searchResultPanelPurchases found:" + elementsearchResultPanelVideos.Text);
 
             // throw new PendingStepException();
